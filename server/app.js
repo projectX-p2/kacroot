@@ -1,15 +1,13 @@
-const express = require('express')
-const app = express()
-const port = 3000
-const router = require ("./routes/index.js")
+const app = require('express')()
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+const socketConfig = require('./socketConfig')
 
-app.use (express.json ())
-app.use (express.urlencoded ({ extended : true}))
+const PORT = 3000
 
-app.use ("/", router)
+socketConfig.start(io)
 
-app.listen(port, () => {
-  console.log(`App is listening at http://localhost:${port}`)
+http.listen(PORT, () => {
+  console.log(`howdy! we are on http://localhost:${PORT}/`)
 })
 
-module.exports = app

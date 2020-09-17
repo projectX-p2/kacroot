@@ -1,4 +1,18 @@
-[
+const messages = [
+    {
+      sender: 'admin',
+      message: 'welcome to quiz app!' 
+    }
+  ] 
+  
+  let users = []    
+  // sample obj user:
+  //{
+  //   socketId: 'admin',
+  //   name: 'welcome to chat app!' 
+  // }
+
+  let questions = [
     {
         "question":"What is the actor's name of Warmaachine from IronMan 1 2008 ?",
         "choice":["Don Cheadle","Terrence Howard","Paul Bettany","Chad Bosman"],
@@ -58,5 +72,59 @@
         "choice":["Winter Knight","Winter Assasin","Winter Hunter","Winter Soldier"],
         "answer":"Winter Soldier"
     }
+  ]
+  // list of game questions
+  
+  let rooms = {}
+  
+  // Nanti bisa require model dari sini.
+  
+  class IoController {
+    static initMessage() {
+      return messages
+    }
 
-]
+    static createRoom(payload,socket) {
+      const room = {
+        id: uuid(),
+        name: payload,
+        sockets: []
+      }
+      rooms[room.id] = room
+    }
+  
+    static register(payload, socket) {
+      users.push({name: payload.name, socketId: socket.id})
+      console.log(users, "after register")
+    }
+  
+    static unregister(payload, socket) {
+      users = users.filter(user => user.socketId !== socket.id)
+      console.log(users, "after unregister")
+    }
+  
+    static sendMessage(payload, socket, io) {
+      messages.push(payload)
+      socket.broadcast.emit('sendMessageToOther', payload)
+      
+    }
+  
+    static privateMessage(payload, io) {
+      // sample. hanya mengambil userId bukan sender.
+      // untuk demo ini, gunakan 2 client saja.
+      const socketId = users.find(u => u.name !== payload.sender).socketId
+  
+      messages.push(payload)
+  
+      // cara emit private message
+      io.to(socketId).emit('privateMessagekeClient', payload);
+    }
+  
+    static isTyping(payload, socket) {
+      socket.broadcast.emit('serverIsTyping', payload) 
+    }
+  
+  
+  }
+  
+  module.exports = IoController
