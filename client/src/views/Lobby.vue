@@ -25,6 +25,20 @@
 
 <script>
 export default {
-  name: 'Lobby'
+  name: 'Lobby',
+  data:{
+    music:'./assets/lobu.mp3'
+  },
+  methods: {
+    playSound (sound) {
+      if(sound) {
+        var audio = new Audio(music);
+        audio.play();
+      }
+    }
+  },
+  created(){
+    audio.play();
+  }
 }
 </script>
