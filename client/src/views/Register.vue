@@ -38,6 +38,7 @@ export default {
       username: '',
       highScore: [],
       player: ''
+      sortedHighScore: []
     }
   },
   methods: {
@@ -49,6 +50,9 @@ export default {
     },
     getHighScore () {
       this.$socket.emit('getHighScore')
+    },
+    sortHighScore () {
+      this.highScore.sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
     }
   },
   sockets: {
@@ -59,6 +63,7 @@ export default {
       // console.log(payload)
       this.highScore = payload
       this.player = localStorage.name
+      this.sortHighScore()
     }
   },
   created () {
