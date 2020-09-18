@@ -43,6 +43,7 @@ export default {
   methods: {
     getQuestion () {
       this.$socket.emit('getQuestion')
+      // localStorage.clear()
     },
     nextQuestion () {
       if (this.index === this.questions.length - 1) {
