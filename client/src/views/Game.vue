@@ -58,6 +58,7 @@ export default {
     getQuestion () {
       // this.$store.dispatch('getQuestion')
       this.$socket.emit('getQuestion')
+      // localStorage.clear()
     },
     nextQuestion () {
       if (this.index === this.questions.length - 1) {

@@ -14,7 +14,7 @@
         </div>
       </form>
 
-      <table class="table table-body1" v-if="highScore">
+      <table class="table table-body1" v-if="player">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Name</th>
@@ -36,14 +36,15 @@ export default {
   data () {
     return {
       username: '',
-      highScore: []
+      highScore: [],
+      player: ''
     }
   },
   methods: {
     submitUser () {
       this.$socket.emit('participantRegistration', { username: this.username })
       // this.$store.dispatch()
-      // localStorage.setItem('name', this.username)
+      localStorage.setItem('name', this.username)
       this.$router.push({ name: 'Game', params: { username: this.username } })
     },
     getHighScore () {
@@ -55,7 +56,9 @@ export default {
       console.log(payload)
     },
     sendHighScore (payload) {
+      // console.log(payload)
       this.highScore = payload
+      this.player = localStorage.name
     }
   },
   created () {
