@@ -62,19 +62,21 @@ let questions = [
   }
 ]
 
+
+// INI ISINYA HIGHSCORE
 let players = [
-    {
-        username: 'test1',
-        score: '25'
-    },
-    {
-        username: 'test2',
-        score: '30'
-    },
-    {
-        username: 'test3',
-        score: '5'
-    }
+    // {
+    //     username: 'test1',
+    //     score: '25'
+    // },
+    // {
+    //     username: 'test2',
+    //     score: '30'
+    // },
+    // {
+    //     username: 'test3',
+    //     score: '5'
+    // }
 ]
 // {
 //     username:
@@ -86,10 +88,6 @@ module.exports = {
     console.log('a user connected') // dari sisi client
 
     socket.emit("init", IoController.initMessage()) // 1 client
-
-
-    //User creates a new room
-    // socket.on("createRoom", IoController.createRoom())
 
     socket.on('participantRegistration', payload => IoController.register(payload, socket))
 
@@ -109,18 +107,6 @@ module.exports = {
         console.log('get high score');
         io.emit('sendHighScore', players)
     })
-
-    // socket.on('newMessage', payload => IoController.sendMessage(payload, socket))
-
-    // socket.on('privateMessage', payload => IoController.sendMessage(payload, io))
-
-    // socket.on('isTyping', payload => IoController.isTyping(payload, socket) )
-
-    // socket.on('disconnect', payload => IoController.unregister(payload, socket))
-
-
-    // memanggil function di Iocontroller
-    // Isi dengan route ke Iocontroller
 
   })
 }

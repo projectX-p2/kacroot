@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 // import Lobby from '../views/Lobby'
 // import Input from '../views/Input.vue'
 import Game from '../views/Game.vue'
+import Finish from '../views/Finish.vue'
 // import Score from '../views/Score.vue'
 
 Vue.use(VueRouter)
@@ -28,6 +29,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/finish',
+    name: 'Finish',
+    component: Finish
   },
   {
     path: '/about',

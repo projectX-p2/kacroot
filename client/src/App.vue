@@ -6,6 +6,8 @@
       <audio controls id="myVideo" autoplay loop>
       <source src="https://vgmdownloads.com/soundtracks/harvest-moon-back-to-nature/fnirnrfw/01-title.mp3" type="audio/mp3" autoplay>
       </audio>
+      <!-- <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> -->
     </div>
     <router-view/>
   </div>
@@ -23,6 +25,8 @@
 
 #nav {
   padding: 30px;
+  /* color: bisque; */
+  background-color: rgb(243, 239, 234);
 }
 
 #nav a {
