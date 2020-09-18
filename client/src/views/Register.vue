@@ -9,7 +9,6 @@
           <button type="submit" class="btn btn-primary">Let's Play</button>
         </div>
       </form>
-
       <table class="table" v-if="highScore">
         <thead>
           <tr>
@@ -50,6 +49,9 @@ export default {
       audio.play()
     }
   },
+  mounted () {
+    this.playSound()
+  },
   sockets: {
     init (payload) {
       console.log(payload)
@@ -60,7 +62,6 @@ export default {
   },
   created () {
     this.getHighScore()
-    this.playSound()
   }
 }
 </script>
