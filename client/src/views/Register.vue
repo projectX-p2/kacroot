@@ -13,8 +13,8 @@
           <button type="submit" class="btn btn-primary">Let's Play</button>
         </div>
       </form>
-      <table class="table" v-if="highScore">
-        <thead>
+      <!-- <table class="table" v-if="highScore">
+        <thead> -->
       <table class="table table-body1" v-if="player">
         <thead class="thead-dark">
           <tr>
@@ -38,8 +38,8 @@ export default {
     return {
       username: '',
       highScore: [],
-      music: 'https://vgmdownloads.com/soundtracks/harvest-moon-back-to-nature/fnirnrfw/01-title.mp3'
-      player: ''
+      music: 'https://vgmdownloads.com/soundtracks/harvest-moon-back-to-nature/fnirnrfw/01-title.mp3',
+      player: '',
       sortedHighScore: []
     }
   },
@@ -56,7 +56,7 @@ export default {
     playSound () {
       var audio = new Audio('https://vgmdownloads.com/soundtracks/harvest-moon-back-to-nature/fnirnrfw/01-title.mp3')
       audio.play()
-     },
+    },
     sortHighScore () {
       this.highScore.sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
     }
