@@ -24,25 +24,11 @@
       <h4>{{ questions[index].choice[3] }}</h4>
     </a>
   </div>
-  <!-- <div id="heading">
-    <h1 id="text">KACROOOT GASKUY</h1>
-  </div>
-  <div id="quiz" v-if="questions">
-    <h1> {{ $route.params.username }} </h1>
-    <h1 id="question"> {{ questions[index].question }}</h1>
-    <label class="option"><input @click.prevent="compareAnswer(questions[index].choice[0], questions[index].answer)" type="button" name="option" :value="questions[index].choice[0]" /><span id="option1"></span></label>
-    <label class="option"><input @click.prevent="compareAnswer(questions[index].choice[1], questions[index].answer)" type="button" name="option" :value="questions[index].choice[1]"/><span id="option2"></span></label>
-    <label class="option"><input @click.prevent="compareAnswer(questions[index].choice[2], questions[index].answer)" type="button" name="option" :value="questions[index].choice[2]" /><span id="option3"></span></label>
-    <label class="option"><input @click.prevent="compareAnswer(questions[index].choice[3], questions[index].answer)" type="button" name="option" :value="questions[index].choice[3]" /><span id="option4"></span></label>
-    <br>
-    <button id="next" @click.prevent="nextQuestion()">NEXT QUESTION</button>
-  </div> -->
 </div>
 </div>
 </template>
 
 <script>
-
 export default {
   name: 'Game',
   data () {
@@ -56,7 +42,6 @@ export default {
   },
   methods: {
     getQuestion () {
-      // this.$store.dispatch('getQuestion')
       this.$socket.emit('getQuestion')
     },
     nextQuestion () {
@@ -66,7 +51,7 @@ export default {
           score: this.point
         }
         this.$socket.emit('sendScore', payload)
-        this.$router.push('/')
+        this.$router.push('/finish')
       } else {
         this.index++
       }
