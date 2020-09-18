@@ -1,10 +1,11 @@
 <template>
+<div id="nav">
 <div class="page-wrapper">
 <div class="container">
   <div class="row">
     <div class="col-3">
       <span><h3> {{ $route.params.username }}, </h3></span>
-      <span><h3> Your score is {{ point }} ! </h3></span>
+      <span><h3> Your score is {{ point }} </h3></span>
     </div>
     <div class="jumbotron question-body" style="min-height:200px">
       <h1 id="question"> {{ questions[index].question }}</h1>
@@ -26,6 +27,7 @@
   </div>
 </div>
 </div>
+</div>
 </template>
 
 <script>
@@ -43,6 +45,7 @@ export default {
   methods: {
     getQuestion () {
       this.$socket.emit('getQuestion')
+      // localStorage.clear()
     },
     nextQuestion () {
       if (this.index === this.questions.length - 1) {
@@ -81,6 +84,7 @@ export default {
   .page-wrapper {
     background-color: rgb(243, 239, 234);
     height: 100vh;
+    margin: auto;
   }
   .question-body {
     background-color: rgb(139, 131, 131);
