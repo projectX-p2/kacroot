@@ -1,17 +1,21 @@
 <template>
-  <div>
+  <div class="page-wrapper">
     <div class="container">
+      <div class="bg-img">
+        <img id="bg-img" style="height: 20vh; max-width: 100%" src="../assets/1600px-MarvelLogo.svg.png" alt="">
+        <h1>Welcome to Marvel Quiz!</h1>
+      </div>
       <form @submit.prevent="submitUser()">
         <div class="form-group">
-          <label for="inputUsername">Enter your Username</label>
-          <input type="text" class="form-control" id="inputUsername" v-model="username" />
+          <label for="inputUsername">Player name</label>
+          <input type="text" class="form-control" style="" id="inputUsername" v-model="username" placeholder="Enter your name" />
           <br>
           <button type="submit" class="btn btn-primary">Let's Play</button>
         </div>
       </form>
 
-      <table class="table" v-if="highScore">
-        <thead>
+      <table class="table table-body1" v-if="highScore">
+        <thead class="thead-dark">
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Score</th>
@@ -39,6 +43,7 @@ export default {
     submitUser () {
       this.$socket.emit('participantRegistration', { username: this.username })
       // this.$store.dispatch()
+      // localStorage.setItem('name', this.username)
       this.$router.push({ name: 'Game', params: { username: this.username } })
     },
     getHighScore () {
@@ -58,3 +63,22 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .page-wrapper {
+    background-color: rgb(243, 239, 234);
+    min-height: 100vh;
+
+  }
+  #bg-img {
+    /* background-image: url("../assets/1600px-MarvelLogo.svg.png");  */
+    /* font-weight: 900; */
+    margin: 0 0 40px 0;
+  }
+  #inputUsername {
+    width: 30vh;
+    margin: auto;
+    text-align: center;
+  }
+
+</style>

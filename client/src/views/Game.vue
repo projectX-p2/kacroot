@@ -1,10 +1,12 @@
 <template>
+<div class="page-wrapper">
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <span><h3> Score : {{ point }} </h3></span>
+      <span><h3> {{ $route.params.username }}, </h3></span>
+      <span><h3> Your score is {{ point }} ! </h3></span>
     </div>
-    <div class="jumbotron" style="min-height:300px">
+    <div class="jumbotron question-body" style="min-height:200px">
       <h1 id="question"> {{ questions[index].question }}</h1>
     </div>
   </div>
@@ -35,6 +37,7 @@
     <br>
     <button id="next" @click.prevent="nextQuestion()">NEXT QUESTION</button>
   </div> -->
+</div>
 </div>
 </template>
 
@@ -88,3 +91,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .page-wrapper {
+    background-color: rgb(243, 239, 234);
+    height: 100vh;
+  }
+  .question-body {
+    background-color: rgb(139, 131, 131);
+    color: white;
+    width: 100%;
+    text-align: center;
+    /* height: 80%; */
+    margin: 25px 10px 30px 10px;
+  }
+</style>
