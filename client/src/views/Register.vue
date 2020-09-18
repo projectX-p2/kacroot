@@ -32,7 +32,8 @@ export default {
   data () {
     return {
       username: '',
-      highScore: []
+      highScore: [],
+      music: 'https://vgmdownloads.com/soundtracks/harvest-moon-back-to-nature/fnirnrfw/01-title.mp3'
     }
   },
   methods: {
@@ -43,6 +44,10 @@ export default {
     },
     getHighScore () {
       this.$socket.emit('getHighScore')
+    },
+    playSound () {
+      var audio = new Audio('https://vgmdownloads.com/soundtracks/harvest-moon-back-to-nature/fnirnrfw/01-title.mp3')
+      audio.play()
     }
   },
   sockets: {
@@ -55,6 +60,7 @@ export default {
   },
   created () {
     this.getHighScore()
+    this.playSound()
   }
 }
 </script>
