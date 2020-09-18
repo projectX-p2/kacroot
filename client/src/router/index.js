@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+// import Lobby from '../views/Lobby'
 // import Input from '../views/Input.vue'
-// import Game from '../views/Game.vue'
+import Game from '../views/Game.vue'
 // import Score from '../views/Score.vue'
 
 Vue.use(VueRouter)
@@ -13,15 +14,15 @@ const routes = [
   //   name: 'Input',
   //   component: Input
   // },
+  {
+    path: '/game',
+    name: 'Game',
+    component: Game
+  },
   // {
-  //   path: '/game',
-  //   name: 'Game',
-  //   component: Game
-  // },
-  // {
-  //   path: '/score',
-  //   name: 'Score',
-  //   component: Score
+  //   path: '/lobby',
+  //   name: 'Lobby',
+  //   component: Lobby
   // },
   {
     path: '/',
