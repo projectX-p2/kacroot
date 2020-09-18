@@ -63,18 +63,18 @@ let questions = [
 ]
 
 let players = [
-    {
-        username: 'test1',
-        score: '25'
-    },
-    {
-        username: 'test2',
-        score: '30'
-    },
-    {
-        username: 'test3',
-        score: '5'
-    }
+    // {
+    //     username: 'test1',
+    //     score: '25'
+    // },
+    // {
+    //     username: 'test2',
+    //     score: '30'
+    // },
+    // {
+    //     username: 'test3',
+    //     score: '5'
+    // }
 ]
 // {
 //     username:
